@@ -5,8 +5,8 @@ const getComputerChoice = function () {
 };
 
 function playRound(playerInput, computerInput) {
-  playerChoice = playerInput.toLowerCase();
-  computerChoice = computerInput.toLowerCase();
+  let playerChoice = playerInput.toLowerCase();
+  let computerChoice = computerInput.toLowerCase();
 
   if (playerChoice === "paper" && computerChoice === "rock") {
     return "You Win! Paper beats Rock";
@@ -24,33 +24,56 @@ function playRound(playerInput, computerInput) {
     return "Its a Tie! Try again";
   }
 }
+let resultStr = "unchanges str";
+const result = document.querySelector(".result");
 
-function Game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let resultString;
-  while (!(playerScore >= 5 || computerScore >= 5)) {
-    let playerInput = prompt("Scissors, Paper or Rock, what is your choice?");
-    let computerInput = getComputerChoice();
-    resultString = playRound(playerInput, computerInput);
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", () => {
+  resultStr = playRound("scissors", getComputerChoice());
+  result.textContent = resultStr;
+  console.log(resultStr);
+});
 
-    if (resultString.includes("Win")) {
-      playerScore++;
-    } else if (resultString.includes("Lose")) {
-      computerScore++;
-    }
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", () => {
+  resultStr = playRound("paper", getComputerChoice());
+  result.textContent = resultStr;
+  console.log(resultStr);
+});
 
-    console.log(resultString);
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
-  }
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", () => {
+  resultStr = playRound("rock", getComputerChoice());
+  result.textContent = resultStr;
+  console.log(resultStr);
+});
 
-  console.log(
-    playerScore == 5 ? "You won the Game!!!" : "You lose the Game!!!"
-  );
-}
+// function Game() {
+//   let playerScore = 0;
+//   let computerScore = 0;
+//   let resultString;
+//   while (!(playerScore >= 5 || computerScore >= 5)) {
+//     let playerInput = prompt("Scissors, Paper or Rock, what is your choice?");
+//     let computerInput = getComputerChoice();
+//     resultString = playRound(playerInput, computerInput);
 
-Game();
+//     if (resultString.includes("Win")) {
+//       playerScore++;
+//     } else if (resultString.includes("Lose")) {
+//       computerScore++;
+//     }
+
+//     console.log(resultString);
+//     console.log(`Player Score: ${playerScore}`);
+//     console.log(`Computer Score: ${computerScore}`);
+//   }
+
+//   console.log(
+//     playerScore == 5 ? "You won the Game!!!" : "You lose the Game!!!"
+//   );
+// }
+
+// Game();
 /*
   
   paper paper
